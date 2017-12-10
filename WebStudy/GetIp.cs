@@ -203,6 +203,7 @@ namespace WebStudy
 
             LogHelper.WriteLine(HttpHelper.GetHtmlTitle(content));
             MessageBox.Show("ok");
+            MessageBox.Show("GitTest");
             
                 
             
