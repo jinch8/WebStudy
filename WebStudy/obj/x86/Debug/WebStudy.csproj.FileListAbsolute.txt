@@ -1,0 +1,14 @@
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\WebStudy.exe
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\WebStudy.pdb
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\WebStudy.Properties.Resources.resources
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\WebStudy.csproj.GenerateResource.Cache
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\WebStudy.exe
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\WebStudy.pdb
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\WebStudy.Browser.resources
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\WebStudy.GetIp.resources
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\WebStudy.csprojResolveAssemblyReference.cache
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\Interop.ThunderAgentLib.dll
+D:\CSharp\eyeshot\WebStudy\WebStudy\obj\x86\Debug\WebStudy.csproj.ResolveComReference.cache
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\Interop.ThunderAgentLib.dll
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\WebStudy.exe.config
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\FlyPigUtil.pdb

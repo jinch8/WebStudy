@@ -1,0 +1,4 @@
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\FlyPigUtil.dll
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\FlyPigUtil.pdb
+D:\CSharp\eyeshot\WebStudy\FlyPigUtil\obj\Debug\FlyPigUtil.dll
+D:\CSharp\eyeshot\WebStudy\FlyPigUtil\obj\Debug\FlyPigUtil.pdb

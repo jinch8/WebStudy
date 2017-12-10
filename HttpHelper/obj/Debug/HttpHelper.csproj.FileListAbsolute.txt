@@ -1,0 +1,4 @@
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\HttpHelper.dll
+D:\CSharp\eyeshot\WebStudy\WebStudy\bin\Debug\HttpHelper.pdb
+D:\CSharp\eyeshot\WebStudy\HttpHelper\obj\Debug\HttpHelper.dll
+D:\CSharp\eyeshot\WebStudy\HttpHelper\obj\Debug\HttpHelper.pdb
