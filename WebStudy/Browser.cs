@@ -35,6 +35,8 @@ namespace WebStudy
 
             string content = sr.ReadToEnd();
             webBrowser.DocumentText = content;
+
+            MessageBox.Show("2part test");
             
         }
     }
