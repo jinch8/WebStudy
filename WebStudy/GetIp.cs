@@ -13,7 +13,6 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
-using ThunderAgentLib;
 using FlyPig.HttpHelper;
 using FlyPig.HttpHelper.Item;
 using FlyPig.Utility;
@@ -244,7 +243,68 @@ namespace WebStudy
             Process.Start(Environment.CurrentDirectory);
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var url = @"https://mjcdn.cc/2/118966443/Tm93IE9yIE5ldmVyIGZlYXQuIFBob2ViZSBSeWFuIChUcml0b25hbCBDbHViIE1peCkubXAz";
+            HttpDownLoad.DownloadFileByAria2(url, Path.Combine(Environment.CurrentDirectory, @"3.mp3"));
+            MessageBox.Show("ok");
+        }
 
+        public static void RedirectExcuteProcess(Process p, string exe, string arg, DataReceivedEventHandler output)
+        {
+            p.StartInfo.FileName = exe;
+            p.StartInfo.Arguments = arg;
 
+            p.StartInfo.UseShellExecute = false;    //输出信息重定向
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.RedirectStandardError = true;
+            p.StartInfo.RedirectStandardOutput = true;
+
+            p.OutputDataReceived += output;
+            p.ErrorDataReceived += output;
+
+            p.Start();                    //启动线程
+            p.BeginOutputReadLine();
+            p.BeginErrorReadLine();
+            p.WaitForExit();            //等待进程结束
+        }
+
+    }
+
+    public class HttpDownLoad
+    {
+
+        public static bool DownloadFileByAria2(string url, string strFileName)
+        {
+            var tool = AppDomain.CurrentDomain.BaseDirectory + "\\aria2\\aria2c.exe";
+            var fi = new FileInfo(strFileName);
+            var command = " -c -s 5 --check-certificate=false -d " + fi.DirectoryName + " -o " + fi.Name + " " + url;
+            Process _p;
+            using (_p = new Process())
+            {
+                GetIp.RedirectExcuteProcess(_p, tool, command, (s, e) => ShowInfo(e.Data));
+            }
+            return true;
+        }
+
+        public static void ShowInfo(string a)
+        {
+            if (a == null) return;
+
+            const string re1 = ".*?"; // Non-greedy match on filler
+            const string re2 = "(\\(.*\\))"; // Round Braces 1
+
+            var r = new Regex(re1 + re2, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            var m = r.Match(a);
+            if (m.Success)
+            {
+                var rbraces1 = m.Groups[1].ToString().Replace("(", "").Replace(")", "").Replace("%", "");
+                if (rbraces1 == "OK")
+                {
+                    rbraces1 = "100";
+                }
+                Console.WriteLine(rbraces1);
+            }
+        }
     }
 }
