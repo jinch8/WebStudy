@@ -269,6 +269,55 @@ namespace WebStudy
             p.WaitForExit();            //等待进程结束
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string url = textBox.Text;
+            MessageBox.Show(HttpHelper.GetUrlIp(url));
+            //List<AItem> ls = HttpHelper.GetAList(url);
+
+            var request = WebRequest.Create(url);
+            var response = request.GetResponse();
+            Stream stream = response.GetResponseStream();
+            StreamReader sr = new StreamReader(stream, Encoding.UTF8);
+
+            string content = sr.ReadToEnd();
+
+            //var ls = HttpHelper.GetAList(content);
+
+            //foreach (var s in ls)
+            //{
+            //    if (s.Img == null) continue;
+            //    listBox.Items.Add(s.Img.Src);
+            //    LogHelper.WriteLine("src : " + s.Img.Src);
+            //    LogHelper.WriteLine("html : " + s.Img.Html);
+
+            //}
+
+            var imgs = HttpHelper.GetImgList(content);
+            LogHelper.WriteLine("---------------------");
+            List<string> imgList = new List<string>();
+            foreach (var img in imgs)
+            {
+                LogHelper.WriteLine(img.Src);
+                imgList.Add(img.Src);
+            }
+
+            //LogHelper.WriteLine(HttpHelper.GetHtmlTitle(content));
+
+            foreach (string address in imgList)
+            {
+                string[] splits = address.Split('/');
+                string fileName = Path.Combine(Environment.CurrentDirectory, @"collect\" + splits[splits.Length - 1]);
+                fileName.Replace("?", "");
+                HttpDownLoad.DownloadFileByAria2(address, fileName);
+                LogHelper.WriteLine("Dowoloaded " + fileName);
+
+            }
+
+            MessageBox.Show("ok");
+            MessageBox.Show("Test1");
+        }
+
     }
 
     public class HttpDownLoad
@@ -290,7 +339,7 @@ namespace WebStudy
         public static void ShowInfo(string a)
         {
             if (a == null) return;
-
+            //LogHelper.WriteLine(a);
             const string re1 = ".*?"; // Non-greedy match on filler
             const string re2 = "(\\(.*\\))"; // Round Braces 1
 
