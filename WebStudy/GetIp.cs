@@ -245,8 +245,47 @@ namespace WebStudy
 
         private void button5_Click(object sender, EventArgs e)
         {
-            var url = @"https://mjcdn.cc/2/118966443/Tm93IE9yIE5ldmVyIGZlYXQuIFBob2ViZSBSeWFuIChUcml0b25hbCBDbHViIE1peCkubXAz";
-            HttpDownLoad.DownloadFileByAria2(url, Path.Combine(Environment.CurrentDirectory, @"3.mp3"));
+            //var url = @"http://img.blog.csdn.net/20130930152314703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamFja3lzdHVkaW8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast";
+            //var url = @"https://images2017.cnblogs.com/news/24442/201712/24442-20171206093739878-889349568.png";
+            var url = @"http://img.blog.csdn.net/20130930152647500?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamFja3lzdHVkaW8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast";
+            //HttpDownLoad.DownloadFileByAria2(url, Path.Combine(Environment.CurrentDirectory, @"3.jpg"));
+            var request = WebRequest.Create(url);
+            //var response = (HttpWebResponse)request.GetResponse();
+            var response = request.GetResponse();
+            //var headers = response.Headers;
+            LogHelper.WriteLine("---------");
+            foreach (string key in response.Headers.AllKeys)
+            {
+                LogHelper.WriteLine(key + ":" + response.Headers[key]);    
+            }
+
+            Uri uri = new Uri(url);
+            //if (uri.IsFile)
+            //{
+            string localPath = uri.LocalPath;
+            string absolutePath = uri.AbsolutePath;
+                string filename = System.IO.Path.GetFileName(uri.LocalPath);
+            //}
+
+            //LogHelper.WriteLine(response.Headers[HttpRequestHeader.ContentLocation]);
+            //Stream stream = response.GetResponseStream();
+            //StreamReader sr = new StreamReader(stream);
+            //string buff;
+            //while ((buff = sr.ReadLine()) != null)
+            //{
+            //    LogHelper.WriteLine(buff);
+            //}
+            //LogHelper.WriteLine(response.ContentLength.ToString());
+            //foreach (var header in headers)
+            //{
+            //    LogHelper.WriteLine(header.ToString());
+            //    //MessageBox.Show(header.ToString());
+            //}
+            //var valueCollect = HttpHelper.GetNameValueCollection(url);
+            //foreach (var v in valueCollect)
+            //{
+            //    MessageBox.Show(v.ToString());
+            //}
             MessageBox.Show("ok");
         }
 
@@ -339,7 +378,7 @@ namespace WebStudy
         public static void ShowInfo(string a)
         {
             if (a == null) return;
-            //LogHelper.WriteLine(a);
+            LogHelper.WriteLine(a);
             const string re1 = ".*?"; // Non-greedy match on filler
             const string re2 = "(\\(.*\\))"; // Round Braces 1
 
