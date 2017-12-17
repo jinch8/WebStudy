@@ -345,16 +345,42 @@ namespace WebStudy
 
             foreach (string address in imgList)
             {
-                string[] splits = address.Split('/');
-                string fileName = Path.Combine(Environment.CurrentDirectory, @"collect\" + splits[splits.Length - 1]);
-                fileName.Replace("?", "");
-                HttpDownLoad.DownloadFileByAria2(address, fileName);
-                LogHelper.WriteLine("Dowoloaded " + fileName);
+                try
+                {
+                    string[] splits = address.Split('/');
+                    Uri uri = new Uri(address);
+                    string file = uri.LocalPath;
+                    //string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"collect\" + splits[splits.Length - 1]);
+                    string ext = splits[splits.Length - 1];
+                    string[] arr = ext.Split('.');
+                    ext = arr[arr.Length - 1];
+                    string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"collect\" + file);
+                    fileName.Replace("?", "");
+                    HttpDownLoad.DownloadFileByAria2(address, fileName);
+                    LogHelper.WriteLine("Dowoloaded " + fileName);
+                }
+                catch (System.Exception ex)
+                {
+                    continue;
+                }
+                
 
             }
 
             MessageBox.Show("ok");
             MessageBox.Show("Test1");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //string url = textBox.Text.Trim();
+            //WebRequest request = WebRequest.Create(url);
+            //WebResponse response = request.GetResponse();
+            //Stream stream = response.GetResponseStream();
+            //StreamReader sr = new StreamReader(stream);
+            //LogHelper.WriteLine(sr.ReadToEnd());
+            //MessageBox.Show("ok");
+            MessageBox.Show(Environment.CommandLine);
         }
 
     }
